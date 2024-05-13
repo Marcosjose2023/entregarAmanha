@@ -1,9 +1,7 @@
 package com.livraria.livraria.Services;
 
 import com.livraria.livraria.Entity.Autores;
-
 import com.livraria.livraria.Repository.AutoresRepository;
-import com.livraria.livraria.dto.AutoresDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,15 +17,18 @@ public class AutoresServices {
     public AutoresServices(AutoresRepository autoresRepository) {
         this.autoresRepository = autoresRepository;
     }
+
     /*public AutoresDto adicionarAutor(AutoresDto autor) {
         var autorEntity = new Autores();
         autorEntity.setNome(autor.getNome());
         autorEntity.setAtivo(autor.isAtivo());
         return AutoresMapper.map(autoresRepository.save(autorEntity));
     }*/
+
     public void cadastrarAutores(Autores autores) {
         autoresRepository.save(autores);
     }
+
     public List<Autores> listarTodosAutores() {
         return autoresRepository.findAll();
     }
@@ -36,7 +37,7 @@ public class AutoresServices {
         return autoresRepository.findById(id);
     }
 
-    /*public Autores updateAutor(Long id) {
+    public Autores atualizarAutor(Long id) {
         var autor = autoresRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.BAD_REQUEST,
@@ -55,6 +56,7 @@ public class AutoresServices {
     public void deletarAutor(Long id) {
         autoresRepository.deleteById(id);
     }
+
     public Autores inativarAutores(Long id) {
         var autor = autoresRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
@@ -77,6 +79,6 @@ public class AutoresServices {
         autor.setAtivo(true);
 
         return autoresRepository.save(autor);
-    }*/
+    }
 
 }

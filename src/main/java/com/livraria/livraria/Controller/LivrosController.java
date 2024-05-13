@@ -3,15 +3,15 @@ package com.livraria.livraria.Controller;
 import com.livraria.livraria.Entity.Categorias;
 import com.livraria.livraria.Entity.Livros;
 import com.livraria.livraria.Services.LivrosServices;
+import com.livraria.livraria.dto.LivrosDTO;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class   LivrosController {
+public class LivrosController {
 
     LivrosServices livrosServices;
 
@@ -19,14 +19,14 @@ public class   LivrosController {
         this.livrosServices = livrosServices;
     }
 
+    @PostMapping("/cadastrarLivros")
+    public void cadastrarLivros(@Valid @RequestBody Livros livros) {
+        livrosServices.cadastrarLivros(livros);
+    }
+
     @GetMapping("/listarLivros")
     public List<Livros> listarLivros() {
         return livrosServices.listarTodosLivros();
-    }
-
-    @PostMapping("/adicionarLivro")
-    public void adicionarLivro(@RequestBody @Valid Livros livros) {
-        livrosServices.cadastrarLivros(livros);
     }
 
     @GetMapping("/buscar/{id}")
@@ -39,12 +39,12 @@ public class   LivrosController {
         return livrosServices.buscarPorTitulo(titulo);
     }
 
-    @PutMapping("/editarLivro")
-    public Livros editar(@RequestBody Livros livros) {
-        return livrosServices.editar(livros);
+    @PutMapping("/editarLivro/{id}")
+    public Livros editarLivros (@RequestBody @PathVariable Livros livros) {
+        return livrosServices.editarLivros(livros);
     }
 
-    public List<Livros> destaque() {
+    public List <Livros> destaque() {
         return livrosServices.destaque();
     }
 
@@ -52,4 +52,11 @@ public class   LivrosController {
     public Optional<Livros> buscarCategoria(@PathVariable Categorias categorias) {
         return livrosServices.buscarPorCategoria(categorias);
     }
+
+    /*@PutMapping("/atualizarLivros/{id}")
+    public ResponseEntity<Void> atualizarLivros(@PathVariable Long id, @RequestBody Livros livros) {
+        livros.setId(id);
+        livrosServices.atualizarLivros(livros);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }*/
 }

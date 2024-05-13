@@ -33,6 +33,7 @@ public class Livros {
     private boolean destaques;
     @NotBlank
     private String sumario;
+    private Integer estoque;
 
     @OneToMany(mappedBy = "livros")
     private List<Categorias> categoria;
@@ -40,7 +41,7 @@ public class Livros {
     public Livros() {
     }
 
-    public Livros(Long id, String titulo, Autores autores, Editoras editoras, Categorias categorias, Double preco, boolean destaques, String sumario,List<Categorias> livros) {
+    public Livros(Long id, String titulo, Autores autores, Editoras editoras, Categorias categorias, Double preco, boolean destaques, String sumario, List<Categorias> livros, Integer estoque) {
         this.id = id;
         this.titulo = titulo;
         this.autores = autores;
@@ -49,15 +50,12 @@ public class Livros {
         this.preco = preco;
         this.destaques = destaques;
         this.sumario = sumario;
+        this.estoque = estoque;
 
     }
 
     public Autores getAutores() {
         return autores;
-    }
-
-    public void setAutores(Autores autores) {
-        this.autores = autores;
     }
 
     public Categorias getCategorias() {
@@ -70,10 +68,6 @@ public class Livros {
 
     public Editoras getEditoras() {
         return editoras;
-    }
-
-    public void setEditoras(Editoras editoras) {
-        this.editoras = editoras;
     }
 
     public Long getId() {
@@ -122,5 +116,13 @@ public class Livros {
 
     public void setCategoria(List<Categorias> categoria) {
         this.categoria = categoria;
+    }
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
     }
 }

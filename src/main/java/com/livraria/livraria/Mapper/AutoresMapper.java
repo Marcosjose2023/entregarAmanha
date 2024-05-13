@@ -1,19 +1,17 @@
-/*package com.livraria.livraria.Mapper;
+package com.livraria.livraria.Mapper;
 
 import com.livraria.livraria.Entity.Autores;
-import com.livraria.livraria.dto.AutoresDto;
-import lombok.Builder;
+import com.livraria.livraria.dto.AutoresDTO;
 
-@Builder
 public class AutoresMapper {
 
-    public static AutoresDto map(Autores autor){
-        return AutoresDto
+    public static AutoresDTO map(Autores autor){
+        return AutoresDTO
                 .builder()
                 .id(autor.getId())
                 .nome(autor.getNome())
                 .ativo(autor.isAtivo())
                 .build();
     }
-}*/
+}
 

@@ -12,7 +12,6 @@ public class Editoras {
     private Long id;
     @NotBlank
     private String nome;
-    @NotBlank
     @OneToMany
     private List<Livros> livros;
 

@@ -30,11 +30,11 @@ public class PedidosController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/cadastrarPedido")
-    public ResponseEntity<Pedidos> cadastrarPedido(@RequestBody Pedidos pedido) {
-        Pedidos novoPedido = pedidosServices.cadastrarPedidos(pedido);
+    /*@PostMapping("/cadastrarPedidos")
+    public ResponseEntity<Pedidos> cadastrarPedidos (@RequestBody Pedidos pedidos) {
+        Pedidos novoPedido = pedidosServices.cadastrarPedidos(pedidos);
         return new ResponseEntity<>(novoPedido, HttpStatus.CREATED);
-    }
+    }*/
 
     @PutMapping("atualizarPedidos/{id}")
     public ResponseEntity<Void> atualizarPedido(@PathVariable Long id, @RequestBody Pedidos pedidos) {
@@ -43,7 +43,7 @@ public class PedidosController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/inativar/{id}")
+    /*@PutMapping("/inativar/{id}")
     public ResponseEntity<Void> inativarPedidos(@PathVariable Long id) {
         pedidosServices.inativarPedidos(id);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -53,6 +53,6 @@ public class PedidosController {
     public ResponseEntity<Void> ativarPedidos(@PathVariable Long id) {
         pedidosServices.ativarPedidos(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    }*/
 
 }
