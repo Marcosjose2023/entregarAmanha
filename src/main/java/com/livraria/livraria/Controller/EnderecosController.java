@@ -13,7 +13,11 @@ import java.util.Optional;
 @RestController
 public class EnderecosController {
 
-    private EnderecosServices enderecosServices;
+    EnderecosServices enderecosServices;
+
+    public EnderecosController(EnderecosServices enderecosServices) {
+        this.enderecosServices = enderecosServices;
+    }
 
     @PostMapping("/cadastrarEndereco")
     public void cadastrarEndereco(@Valid @RequestBody Enderecos enderecos) {

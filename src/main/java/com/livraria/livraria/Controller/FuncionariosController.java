@@ -14,7 +14,11 @@ import java.util.Optional;
 @RequestMapping("/funcionarios")
 public class FuncionariosController {
 
-    private FuncionariosServices funcionariosServices;
+    FuncionariosServices funcionariosServices;
+
+    public FuncionariosController(FuncionariosServices funcionariosServices) {
+        this.funcionariosServices = funcionariosServices;
+    }
 
     @PostMapping("/cadastrarFuncionarios")
     public void cadastrarFuncionarios(@Valid @RequestBody Funcionarios funcionarios) {

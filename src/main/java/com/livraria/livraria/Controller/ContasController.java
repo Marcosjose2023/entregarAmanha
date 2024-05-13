@@ -12,16 +12,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/contas")
 public class ContasController {
 
-    private ContasServices contasServices;
+    ContasServices contasServices;
+
+    public ContasController(ContasServices contasServices) {
+        this.contasServices = contasServices;
+    }
 
     @PostMapping("/cadastrarConta")
     public void cadastrarContas (@Valid @RequestBody Contas contas) {
         contasServices.cadastrarContas(contas);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletarConta/{id}")
     public void deletarContas (@PathVariable Long id) {
         contasServices.deletarContas(id);
     }
@@ -33,7 +36,7 @@ public class ContasController {
     public List<Contas> listarContas() {
         return contasServices.listarContas();
     }
-    @GetMapping("/buscarPorId")
+    @GetMapping("/buscarContaPorId")
     public Optional<Contas> buscarPorid(Long id) {
         return contasServices.buscarContas(id);
     }

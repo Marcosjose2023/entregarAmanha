@@ -11,10 +11,11 @@ import java.util.List;
 @RestController
 public class CategoriasController {
 
-    private Categorias categorias;
+    CategoriasServices categoriasServices;
 
-    @Autowired
-    private CategoriasServices categoriasServices;
+    public CategoriasController(CategoriasServices categoriasServices) {
+        this.categoriasServices = categoriasServices;
+    }
 
     @GetMapping("/listarCategorias")
     public List<Categorias> listarCategorias() {

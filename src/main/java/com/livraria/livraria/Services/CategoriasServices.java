@@ -1,8 +1,6 @@
 package com.livraria.livraria.Services;
 
 import com.livraria.livraria.Entity.Categorias;
-import com.livraria.livraria.Entity.Clientes;
-import com.livraria.livraria.Entity.Livros;
 import com.livraria.livraria.Repository.CategoriasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

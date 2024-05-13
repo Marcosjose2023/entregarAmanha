@@ -12,11 +12,15 @@ import java.util.Optional;
 @RestController
 public class ClientesController {
 
-    private ClientesServices clientesServices;
+    ClientesServices clientesServices;
 
-    @PostMapping("/cadastrarClienteAndEdit")
-    public void cadastrarCliente (@Valid @RequestBody Clientes cliente) {
-        clientesServices.cadastrarCliente(cliente);
+    public ClientesController(ClientesServices clientesServices) {
+        this.clientesServices = clientesServices;
+    }
+
+    @PostMapping("/cadastrarClientes")
+    public void cadastrarClientes (@Valid @RequestBody Clientes clientes) {
+        clientesServices.cadastrarClientes(clientes);
     }
     @DeleteMapping("/deletarCliente/{id}")
     public void deletarCliente(@PathVariable long id) {
@@ -34,4 +38,5 @@ public class ClientesController {
     public Optional<Clientes> buscarPeloClientes(long id) {
         return clientesServices.buscarPeloIdClientes(id);
     }
+
 }

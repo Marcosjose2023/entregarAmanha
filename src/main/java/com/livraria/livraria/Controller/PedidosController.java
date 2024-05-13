@@ -12,7 +12,11 @@ import java.util.Optional;
 @RestController
 public class PedidosController {
 
-    private PedidosServices pedidosServices;
+    PedidosServices pedidosServices;
+
+    public PedidosController(PedidosServices pedidosServices) {
+        this.pedidosServices = pedidosServices;
+    }
 
     @GetMapping
     public List<Pedidos> listarTodosPedidos() {
@@ -26,13 +30,13 @@ public class PedidosController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping
+    @PostMapping("/cadastrarPedido")
     public ResponseEntity<Pedidos> cadastrarPedido(@RequestBody Pedidos pedido) {
         Pedidos novoPedido = pedidosServices.cadastrarPedidos(pedido);
         return new ResponseEntity<>(novoPedido, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("atualizarPedidos/{id}")
     public ResponseEntity<Void> atualizarPedido(@PathVariable Long id, @RequestBody Pedidos pedidos) {
         pedidos.setId(id);
         pedidosServices.atualizarPedidos(pedidos);

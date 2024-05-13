@@ -32,8 +32,8 @@ public class ContasServices {
         List<Contas> CO = contasRepository.findAll();
         return CO;
     }
-   /* public Contas atualizarContas(Contas contas) {
+   public Contas atualizarContas(Contas contas) {
         return contasRepository.save(contas);
-    }*/
+    }
 
 }

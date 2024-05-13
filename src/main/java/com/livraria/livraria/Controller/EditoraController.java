@@ -8,17 +8,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@RestController
 public class EditoraController {
 
-    private EditoresServices editoresServices;
+     EditoresServices editoresServices;
 
+    public EditoraController(EditoresServices editoresServices) {
+        this.editoresServices = editoresServices;
+    }
 
     @PostMapping("/cadastrarEditora")
     public void cadastrarEditora(@Valid @RequestBody Editoras editoras) {
         editoresServices.cadastrarEditoras(editoras);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/DeletarEditora/{id}")
     public void deletarEditoras(@PathVariable Long id) {
         editoresServices.deletarEditora(id);
     }
