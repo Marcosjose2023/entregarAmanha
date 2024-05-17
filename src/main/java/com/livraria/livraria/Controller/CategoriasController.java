@@ -1,6 +1,7 @@
 package com.livraria.livraria.Controller;
 
 import com.livraria.livraria.Entity.Categorias;
+import com.livraria.livraria.Entity.Funcionarios;
 import com.livraria.livraria.Services.CategoriasServices;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categoria")
 public class CategoriasController {
 
     CategoriasServices categoriasServices;
@@ -27,8 +27,16 @@ public class CategoriasController {
         categoriasServices.criarCategorias(categorias);
     }
 
-    @PutMapping("/ativar/{id}/{ativo}")
-    public void alterarAtivacaoCategorias(@RequestParam Long id, @RequestParam @Valid boolean ativo) {
-        categoriasServices.ativar(id, ativo);
+    @PutMapping("/inativar/{id}")
+    public void inativarCategoria(@PathVariable Long id) {
+        categoriasServices.inativarCategorias(id);
+    }
+    @PutMapping("/ativar/{id}/")
+    public void ativarCategoria(@PathVariable Long id) {
+        categoriasServices.ativarCategorias(id);
+    }
+    @PutMapping("/editarCategorias")
+    public Categorias AtualizarCategorias(@RequestBody Categorias categorias) {
+        return categoriasServices.AtualizarCategorias(categorias);
     }
 }

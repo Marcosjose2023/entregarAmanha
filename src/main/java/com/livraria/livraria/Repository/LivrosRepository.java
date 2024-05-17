@@ -1,6 +1,8 @@
 package com.livraria.livraria.Repository;
 
+import com.livraria.livraria.Entity.Autores;
 import com.livraria.livraria.Entity.Categorias;
+import com.livraria.livraria.Entity.Editoras;
 import com.livraria.livraria.Entity.Livros;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,7 +16,8 @@ public interface LivrosRepository extends JpaRepository<Livros,Long> {
 
     Optional<Livros> findByCategorias(Categorias categoria);
 
-    List<Livros> findByAutores(String autores);
+    List<Livros> findByAutores(Autores autor);
 
-    List<Livros> findByEditoras(String editoras);
+    List<Livros> findByEditoras(Editoras editoras);
+
 }

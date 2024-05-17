@@ -22,12 +22,12 @@ public class ClientesServices {
         clientesRepository.save(clientes);
     }
 
-    public Optional<Clientes> buscarPeloIdClientes(long id) {
+    public Optional<Clientes> buscarPeloIdClientes(Long id) {
         return clientesRepository.findById(id);
     }
 
     public void deletarCliente(Long id) {
-        clientesRepository.deleteAllById(id);
+        clientesRepository.deleteById(id);
     }
 
    /* public Clientes editarClientes(Clientes clientes) {

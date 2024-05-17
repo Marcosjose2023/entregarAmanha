@@ -20,7 +20,7 @@ public class LivrosController {
     }
 
     @PostMapping("/cadastrarLivros")
-    public void cadastrarLivros(@Valid @RequestBody Livros livros) {
+    public void cadastrarLivros(@Valid @RequestBody LivrosDTO livros) {
         livrosServices.cadastrarLivros(livros);
     }
 
@@ -43,11 +43,11 @@ public class LivrosController {
     public Livros editarLivros (@RequestBody @PathVariable Livros livros) {
         return livrosServices.editarLivros(livros);
     }
-
-    public List <Livros> destaque() {
-        return livrosServices.destaque();
-    }
-
+//    @GetMapping("/destaques")
+//    public List <Livros> destaque(Livros destaques) {
+//        return livrosServices.destaque();
+//    }
+//mexer dps
     @GetMapping("/buscarCategoria/{categorias}")
     public Optional<Livros> buscarCategoria(@PathVariable Categorias categorias) {
         return livrosServices.buscarPorCategoria(categorias);

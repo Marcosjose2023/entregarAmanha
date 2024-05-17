@@ -1,10 +1,7 @@
 package com.livraria.livraria.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,19 +10,18 @@ import java.util.List;
 @Entity
 public class Livros {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     private String titulo;
     @NotNull
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Autores autores;
     @NotNull
-    @OneToOne
-    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
     private Editoras editoras;
     @NotNull
-    @OneToOne
-    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
     private Categorias categorias;
     @NotNull
     private Double preco;
@@ -33,10 +29,11 @@ public class Livros {
     private boolean destaques;
     @NotBlank
     private String sumario;
+    @NotNull
     private Integer estoque;
 
-    @OneToMany(mappedBy = "livros")
-    private List<Categorias> categoria;
+//    @OneToMany(mappedBy = "livros")
+//    private ListCategorias categoria;
 
     public Livros() {
     }
@@ -52,6 +49,14 @@ public class Livros {
         this.sumario = sumario;
         this.estoque = estoque;
 
+    }
+
+    public void setAutores(Autores autores) {
+        this.autores = autores;
+    }
+
+    public void setEditoras(Editoras editoras) {
+        this.editoras = editoras;
     }
 
     public Autores getAutores() {
@@ -108,14 +113,6 @@ public class Livros {
 
     public void setSumario(String sumario) {
         this.sumario = sumario;
-    }
-
-    public List<Categorias> getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(List<Categorias> categoria) {
-        this.categoria = categoria;
     }
 
     public Integer getEstoque() {

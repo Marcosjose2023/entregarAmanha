@@ -3,6 +3,7 @@ package com.livraria.livraria.Controller;
 import com.livraria.livraria.Entity.Funcionarios;
 import com.livraria.livraria.Services.FuncionariosServices;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 public class FuncionariosController {
-
+    @Autowired
     FuncionariosServices funcionariosServices;
 
     public FuncionariosController(FuncionariosServices funcionariosServices) {
@@ -25,7 +26,7 @@ public class FuncionariosController {
     }
 
     @GetMapping("/listarTodosFuncionarios")
-    public List<Funcionarios> getALLFuncionarios() {
+    public List<Funcionarios> listarTodosFuncionarios() {
         return funcionariosServices.listarTodosFuncionarios();
     }
 

@@ -1,7 +1,5 @@
 package com.livraria.livraria.Controller;
 
-import com.livraria.livraria.Entity.Clientes;
-import com.livraria.livraria.Entity.Contas;
 import com.livraria.livraria.Entity.Editoras;
 import com.livraria.livraria.Services.EditoresServices;
 import jakarta.validation.Valid;
@@ -47,7 +45,7 @@ public class EditoraController {
     public Optional<Editoras> buscarPorid(@PathVariable @Valid Long id) {
         return editoresServices.buscarPorId(id);
     }
-    @PutMapping("/editarEditoras{id}")
+    @PutMapping("/editarEditoras/{id}")
     public Editoras atualizarEditoras(@PathVariable @Valid Editoras editoras) {
         return editoresServices.AtualizarEditoras(editoras);
     }

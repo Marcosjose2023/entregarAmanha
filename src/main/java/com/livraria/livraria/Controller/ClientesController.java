@@ -25,7 +25,7 @@ public class ClientesController {
     }
 
     @DeleteMapping("/deletarCliente/{id}")
-    public void deletarCliente(@PathVariable long id) {
+    public void deletarCliente(@PathVariable Long id) {
         clientesServices.deletarCliente(id);
     }
 
@@ -44,9 +44,4 @@ public class ClientesController {
         return clientesServices.buscarPeloIdClientes(id);
     }
 
-    @PutMapping("/inativarClientes/{id}")
-    public ResponseEntity<Void> inativarClientes(@PathVariable Long id) {
-        clientesServices.inativarClientes(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }

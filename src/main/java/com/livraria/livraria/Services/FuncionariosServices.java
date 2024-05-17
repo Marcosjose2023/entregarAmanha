@@ -33,8 +33,7 @@ public class FuncionariosServices {
     }
 
     public List<Funcionarios> listarTodosFuncionarios() {
-        List<Funcionarios> FU = funcionariosRepository.findAll();
-        return FU;
+        return funcionariosRepository.findAll();
     }
 
     public Funcionarios atualizarFuncionarios(Funcionarios funcionarios) {

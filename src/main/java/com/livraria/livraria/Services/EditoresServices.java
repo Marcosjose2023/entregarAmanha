@@ -2,7 +2,6 @@ package com.livraria.livraria.Services;
 
 import com.livraria.livraria.Entity.Editoras;
 import com.livraria.livraria.Repository.EditorasRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class EditoresServices {
         return editorasRepository.findById(id);
     }
 
-    public Editoras AtualizarEditoras (Editoras editoras) {
+    public Editoras AtualizarEditoras(Editoras editoras) {
         return editorasRepository.save(editoras);
     }
 
@@ -41,7 +40,4 @@ public class EditoresServices {
         editorasRepository.deleteById(id);
     }
 
-    public Editoras atualizarLivro(Editoras Editoras) {
-        return editorasRepository.save(Editoras);
-    }
 }

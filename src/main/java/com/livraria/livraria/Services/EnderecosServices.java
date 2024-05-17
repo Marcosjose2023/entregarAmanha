@@ -28,17 +28,16 @@ public class EnderecosServices {
         return enderecosRepository.findAll();
     }
 
-    public Optional<Enderecos> buscarPorId(long id) {
+    /*public Optional<Enderecos> buscarPorId(long id) {
         return enderecosRepository.findById(id);
-    }
-
+    }*/
     public Enderecos editarEnderecos(Enderecos enderecos) {
         return enderecosRepository.save(enderecos);
     }
 
-    public Optional<Enderecos> buscarPeloCidade(String cidade) {
+    /*public Optional<Enderecos> buscarPeloCidade(String cidade) {
         return enderecosRepository.findByCidade(cidade);
-    }
+    }*/
 
     public void deletarEnderecos(Long id) {
         enderecosRepository.deleteById(id);

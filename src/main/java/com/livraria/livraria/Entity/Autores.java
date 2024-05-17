@@ -13,7 +13,7 @@ public class Autores {
     private Long id;
     @NotBlank
     private String nome;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Livros> livros;
     private boolean ativo ;
 
