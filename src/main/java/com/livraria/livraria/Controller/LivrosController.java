@@ -3,7 +3,7 @@ package com.livraria.livraria.Controller;
 import com.livraria.livraria.Entity.Categorias;
 import com.livraria.livraria.Entity.Livros;
 import com.livraria.livraria.Services.LivrosServices;
-import com.livraria.livraria.dto.LivrosDTO;
+import com.livraria.livraria.dto.LivrosDto;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class LivrosController {
     }
 
     @PostMapping("/cadastrarLivros")
-    public void cadastrarLivros(@Valid @RequestBody LivrosDTO livros) {
+    public void cadastrarLivros(@Valid @RequestBody LivrosDto livros) {
         livrosServices.cadastrarLivros(livros);
     }
 

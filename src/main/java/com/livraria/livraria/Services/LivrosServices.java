@@ -8,8 +8,8 @@ import com.livraria.livraria.Repository.AutoresRepository;
 import com.livraria.livraria.Repository.CategoriasRepository;
 import com.livraria.livraria.Repository.EditorasRepository;
 import com.livraria.livraria.Repository.LivrosRepository;
-import com.livraria.livraria.dto.LivrosDTO;
-import jakarta.validation.constraints.NotNull;
+import com.livraria.livraria.dto.LivrosDto;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,33 +17,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class LivrosServices {
 
-    @Autowired
-     LivrosRepository livrosRepository;
-    @Autowired
-     AutoresRepository autoresRepository;
-    @Autowired
-     EditorasRepository editorasRepository;
-    @Autowired
-     CategoriasRepository categoriasRepository;
+    LivrosRepository livrosRepository;
+    AutoresRepository autoresRepository;
+    EditorasRepository editorasRepository;
+    CategoriasRepository categoriasRepository;
 
-    Livros livros;
-
-    public LivrosServices(LivrosRepository livrosRepository) {
-        this.livrosRepository = livrosRepository;
-    }
-    /*public void cadastrarLivros(Livros livros) {
-        livrosRepository.save(livros);
-    }*/
-    public void cadastrarLivros( LivrosDTO livrosDTO) {
+    public void cadastrarLivros(LivrosDto livrosDTO) {
         Autores autores = autoresRepository.findById(livrosDTO.getIdautor())
                 .orElseThrow(() -> new IllegalArgumentException("Autor não encontrado com o ID: " + livrosDTO.getIdautor()));
 
         Editoras editoras = editorasRepository.findById(livrosDTO.getIdeditora())
                 .orElseThrow(() -> new IllegalArgumentException("Editora não encontrada com o ID: " + livrosDTO.getIdeditora()));
 
-        Categorias categorias = categoriasRepository.findById(livrosDTO.getIdcategorias()).orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada com ID:" + livrosDTO.getIdeditora()));
+        Categorias categorias = categoriasRepository.findById(livrosDTO.getIdcategorias())
+                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada com ID:" + livrosDTO.getIdeditora()));
 
         Livros livros = new Livros();
         livros.setAutores(autores);
@@ -55,7 +45,6 @@ public class LivrosServices {
         livros.setSumario(livrosDTO.getSumario());
         livrosRepository.save(livros);
     }
-
 
     public List<Livros> listarTodosLivros() {
         return livrosRepository.findAll();

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,18 @@ public class AutoresServices {
     }
 
     public List<Autores> listarTodosAutores() {
-        return autoresRepository.findAll();
+        List<Autores> autores = autoresRepository.findAll();
+
+        List<AutoresDto> autoresDto = new ArrayList<AutoresDto>();
+
+        for(Autores autor : autores){
+            // colocar o autor pra dentro do AutorDto
+            // Busca a lista de livros do autor
+            // converte a lista de Livros pra LivroDto
+            // coloca a lista de LivrosDto dentro do AutorDto
+            autoresDto.add(autorDto);
+        }
+
     }
 
     public Optional<Autores> buscarPorId(long id) {

@@ -8,10 +8,10 @@ public class AutoresDTO {
 
     private Long id;
     private String nome;
-    private List<LivrosDTO> livros;
+    private List<LivrosDto> livros;
     private boolean ativo;
 
-    public AutoresDTO(Long id, String nome, List<LivrosDTO> livros, boolean ativo) {
+    public AutoresDTO(Long id, String nome, List<LivrosDto> livros, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.livros = livros;
@@ -37,11 +37,11 @@ public class AutoresDTO {
         this.nome = nome;
     }
 
-    public List<LivrosDTO> getLivros() {
+    public List<LivrosDto> getLivros() {
         return livros;
     }
 
-    public void setLivros(List<LivrosDTO> livros) {
+    public void setLivros(List<LivrosDto> livros) {
         this.livros = livros;
     }
 
